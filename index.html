@@ -2,104 +2,97 @@
 <html lang="en" class="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>YH News – Front Page</title>
-  <meta name="description" content="Latest hospital news and announcements from Yuzhny Hospital." />
-  <meta property="og:title" content="YH News" />
-  <meta property="og:description" content="Yuzhny Hospital news and events" />
-  <meta property="og:image" content="https://yourdomain.com/assets/preview.jpg" />
-  <link rel="icon" href="https://yourdomain.com/assets/favicon.ico" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YH News - Front Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { animation: { fadeIn: 'fadeIn 1s ease-in-out forwards' }, keyframes: { fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } } } } }
-    }
-  </script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @layer utilities {
-      .marquee { white-space: nowrap; overflow:hidden; animation: scroll-left 15s linear infinite; }
-      @keyframes scroll-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-    }
+    body { font-family: 'Roboto Slab', serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
   </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
-  <!-- Hero Ticker + Mode Toggle -->
-  <div class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 py-2">
-    <div class="marquee px-4">
-      🚨 Operation Vital Sign ongoing • 💉 Free Flu Vaccinations available • ☕ Visit the 24/7 Hospital Café
+<body class="bg-[#f7f7f5] text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
+  <!-- 🔗 NAVBAR -->
+  <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+    <div class="flex items-center gap-4">
+      <h1 class="text-2xl font-bold font-playfair">YH NEWS</h1>
+      <span class="text-sm text-gray-500 dark:text-gray-300 hidden sm:block">The Official Voice of Yuzhny Hospital</span>
     </div>
-  </div>
-  <header class="flex items-center justify-between max-w-6xl mx-auto px-4 py-4">
-    <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl">YH NEWS</h1>
-    <button id="mode-toggle" class="p-2 rounded bg-gray-200 dark:bg-gray-800">
-      <span id="icon-light">🌞</span><span id="icon-dark" class="hidden">🌙</span>
-    </button>
+    <nav class="mt-3 md:mt-0 flex gap-4 text-sm font-semibold uppercase">
+      <a href="index.html" class="text-blue-700 dark:text-blue-300">Front Page</a>
+      <a href="opinion.html" class="hover:text-blue-600 dark:hover:text-blue-400">Opinion</a>
+      <a href="community.html" class="hover:text-blue-600 dark:hover:text-blue-400">Community</a>
+    </nav>
   </header>
-  
-  <main class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    
-    <!-- Featured Article -->
-    <article class="md:col-span-2 space-y-4">
-      <h2 class="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold animate-fadeIn">
-        Yuzhny Hospital Launches &ldquo;Vital Sign&rdquo; Initiative
-      </h2>
-      <p class="text-sm text-gray-600 dark:text-gray-400">By YH News Staff • Published June 22, 2025</p>
-      <img src="https://images.unsplash.com/photo-1588776814546-b88a3d45aab7?auto=format&fit=crop&w=1200&q=80"
-           alt="Hospital staff in meeting"
-           class="w-full h-auto rounded shadow-lg filter grayscale-[30%] animate-fadeIn">
-      <div class="space-y-4 text-gray-800 dark:text-gray-200">
-        <p><span class="text-4xl float-left leading-none mr-2">Y</span>UZHNY — In a proactive move to enhance urban resilience…</p>
-        <p>"Readiness is not a goal; it's a constant state of practice," Dr. Gogoi stated...</p>
-      </div>
-      <!-- Emoji Reactions -->
-      <div class="flex space-x-4 mt-4">
-        <button class="text-2xl hover:scale-110 transition">👍</button>
-        <button class="text-2xl hover:scale-110 transition">❤️</button>
-        <button class="text-2xl hover:scale-110 transition">😮</button>
+
+  <!-- 🔥 FEATURE ARTICLE -->
+  <main class="max-w-5xl mx-auto px-6 py-10">
+    <article>
+      <h2 class="text-4xl font-bold font-playfair mb-4">Yuzhny Hospital Launches “Vital Sign” Initiative</h2>
+      <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Published June 22, 2025 by YH News Staff</p>
+      <img src="https://images.unsplash.com/photo-1588776814546-b88a3d45aab7?auto=format&fit=crop&w=1200&q=80" alt="Hospital staff" class="rounded-lg mb-8 shadow-md">
+      <div class="space-y-6 text-[1.1rem] leading-7">
+        <p><strong>Yuzhny —</strong> In a proactive move to enhance urban resilience, Yuzhny Hospital has officially launched “Operation Vital Sign,” the most comprehensive emergency response drill in the city's history.</p>
+        <p>Led by Deputy of Chief Dr. Glorious Gogoi, the initiative aims to stress-test the collaborative abilities of the city's police, military, and medical services in the face of a large-scale simulated disaster.</p>
+        <p><em>"Readiness is not a goal; it's a constant state of practice,"</em> said Dr. Gogoi. <em>"This drill will ensure we are prepared for any crisis."</em></p>
       </div>
     </article>
-    
-    <!-- Sidebar Components -->
-    <aside class="space-y-8">
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <h3 class="font-playfair text-xl font-bold mb-4">A Legacy of Leadership</h3>
-        <img src="https://raw.githubusercontent.com/DrxEaruingam/akshay-retirement/main/akshay.webp"
-             alt="Dr. Akshay Khandare"
-             class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-md mb-4">
-        <p class="text-sm font-semibold">Chief Khandare Retires</p>
-        <p class="text-xs italic text-gray-600 dark:text-gray-400 mt-1">
-          After two decades of visionary service...
-        </p>
+
+    <!-- 📌 QUICK HIGHLIGHTS -->
+    <section class="mt-16">
+      <h3 class="text-2xl font-bold font-playfair mb-4 border-b pb-2 border-gray-400">Quick Highlights</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm text-gray-800 dark:text-gray-200">
+        <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-md">✅ <strong>400+</strong> participated in emergency drill.</div>
+        <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-md">👨‍⚕️ Dr. Gogoi awarded “Leadership in Crisis” medal.</div>
+        <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-md">🩺  New Trauma Wing plans revealed for Q4 2025.</div>
       </div>
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <h3 class="font-playfair text-xl font-bold mb-4">Hospital Announcements</h3>
-        <ul class="space-y-2 text-sm">
-          <li>✅ New visitor hours from July 1st.</li>
-          <li>🔧 North wing closure for renovation.</li>
-          <li>📅 Annual staff reviews due this month.</li>
+    </section>
+
+    <!-- 💬 QUOTE OF THE WEEK -->
+    <section class="mt-12 bg-blue-50 dark:bg-blue-900 rounded-md p-6 text-center shadow">
+      <h4 class="font-bold text-lg mb-2">🗣️ Quote of the Week</h4>
+      <p class="italic text-blue-800 dark:text-blue-100">“The strength of the team is each individual member. The strength of each member is the team.”</p>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">– Phil Jackson</p>
+    </section>
+
+    <!-- 🎬 BEHIND THE SCENES -->
+    <section class="mt-16">
+      <h3 class="text-2xl font-bold font-playfair mb-4 border-b pb-2 border-gray-400">Behind the Scenes</h3>
+      <p class="text-[1rem] leading-7 mb-6">While the spotlight shone on emergency units, the hospital’s kitchen staff, janitorial crew, and security teams quietly played essential roles in the background logistics of Operation Vital Sign. Their dedication ensured smooth execution and safety throughout the simulation.</p>
+    </section>
+
+    <!-- 🔗 SIDEBAR SECTIONS -->
+    <section class="mt-16 grid md:grid-cols-2 gap-6">
+      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-lg shadow-md">
+        <h3 class="font-playfair text-xl mb-2">A Legacy of Leadership</h3>
+        <img src="https://raw.githubusercontent.com/DrxEaruingam/akshay-retirement/main/akshay.webp" alt="Dr. Akshay" class="rounded-full w-24 h-24 mx-auto mb-4 object-cover border-4 border-white shadow-lg">
+        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Dr. Akshay Khandare retires after 20 years of visionary leadership.</p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-lg shadow-md">
+        <h3 class="font-playfair text-xl mb-4">Hospital Announcements</h3>
+        <ul class="list-disc pl-6 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+          <li>New visitor hours start July 1st.</li>
+          <li>North wing closed for renovation.</li>
+          <li>Staff reviews due by month-end.</li>
         </ul>
       </div>
-    </aside>
-    
+    </section>
   </main>
 
-  <footer class="bg-gray-200 dark:bg-gray-800 text-center py-6">
-    <p class="text-sm">&copy; 2025 Yuzhny Hospital News Network</p>
+  <!-- 🔚 FOOTER -->
+  <footer class="bg-gray-100 dark:bg-gray-800 mt-16 py-6 text-center">
+    <p class="text-sm text-gray-600 dark:text-gray-300">&copy; 2025 Yuzhny Hospital News Network</p>
   </footer>
 
+  <!-- 🌗 DARK MODE TOGGLE -->
   <script>
-    const btn = document.getElementById('mode-toggle');
-    const html = document.documentElement;
-    const iconLight = document.getElementById('icon-light');
-    const iconDark = document.getElementById('icon-dark');
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      iconLight.classList.toggle('hidden');
-      iconDark.classList.toggle('hidden');
-    });
+    const header = document.querySelector('header');
+    const toggleBtn = document.createElement('button');
+    toggleBtn.innerText = '🌞/🌙';
+    toggleBtn.className = "text-lg ml-4 hover:opacity-75 transition";
+    toggleBtn.onclick = () => document.documentElement.classList.toggle('dark');
+    header.appendChild(toggleBtn);
   </script>
 </body>
 </html>
