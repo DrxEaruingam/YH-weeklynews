@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YH News - Community & Ads</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto Slab', serif;
+      background-color: #f3f2ee;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiGAAAAA1BMVEX///+nxBvIAAAAIElEQVRIie3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAID3AR2QAAEZ22inAAAAAElFTkSuQmCC');
+    }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .newspaper-header { border-bottom: 4px double #2c2c2c; }
+    .nav-link {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <!-- HEADER -->
+  <header class="bg-stone-100 py-4 shadow-sm">
+    <div class="container mx-auto px-6 newspaper-header pb-4 text-center">
+      <h1 class="font-playfair text-5xl md:text-7xl font-extrabold text-black">YH NEWS</h1>
+      <p class="text-sm text-gray-600 mt-1 tracking-widest uppercase">The Official Voice of Yuzhny Hospital</p>
+    </div>
+    <div class="container mx-auto px-6 py-2 text-xs text-gray-700 flex justify-between border-b border-gray-400">
+      <nav class="flex gap-4 items-center">
+        <a href="./index.html" class="nav-link text-gray-600 hover:text-black">Front Page</a>
+        <a href="./opinion.html" class="nav-link text-gray-600 hover:text-black">Opinion</a>
+        <a href="./community.html" class="nav-link text-blue-800">Community & Ads</a>
+      </nav>
+      <span id="current-date">Loading date...</span>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container mx-auto px-6 py-10">
+    <h2 class="font-playfair text-4xl font-bold text-black mb-6 border-b-2 border-gray-400 pb-2">Community & Advertisements</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Ad 1 -->
+      <div class="bg-stone-50 p-6 rounded-sm shadow-md border border-gray-200 text-center">
+        <h3 class="font-playfair text-lg font-bold">ADVERTISEMENT</h3>
+        <div class="border-y-2 border-dashed border-gray-300 my-2 py-4">
+          <p class="font-bold text-blue-800 text-xl">Visit the Yuzhny Hospital Cafe!</p>
+          <p class="mt-2">Now serving freshly brewed coffee and healthy snacks. Open 24/7 for all staff and visitors.</p>
+        </div>
+      </div>
+
+      <!-- Ad 2 -->
+      <div class="bg-stone-50 p-6 rounded-sm shadow-md border border-gray-200 text-center">
+        <h3 class="font-playfair text-lg font-bold">COMMUNITY EVENT</h3>
+        <div class="border-y-2 border-dashed border-gray-300 my-2 py-4">
+          <p class="font-bold text-green-800 text-xl">Annual Charity Blood Drive</p>
+          <p class="mt-2">Join us next Saturday in the main lobby to donate blood and save a life. Refreshments will be provided.</p>
+        </div>
+      </div>
+
+      <!-- PSA -->
+      <div class="md:col-span-2 bg-stone-50 p-6 rounded-sm shadow-md border border-gray-200 text-center">
+        <h3 class="font-playfair text-lg font-bold">PUBLIC SERVICE ANNOUNCEMENT</h3>
+        <div class="border-y-2 border-dashed border-gray-300 my-2 py-4">
+          <p class="font-bold text-red-800 text-xl">Seasonal Flu Vaccinations Available</p>
+          <p class="mt-2">Protect yourself and your loved ones. Flu shots are now available at the Yuzhny community clinic. Walk-ins welcome.</p>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white mt-16 py-8">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="font-playfair text-2xl">YH NEWS</h3>
+      <p class="text-sm text-gray-400 mt-2">&copy; 2025 Yuzhny Hospital News Network.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+  </script>
+</body>
+</html>
