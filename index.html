@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YH News - Front Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto Slab', serif;
+      background-color: #f3f2ee;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiGAAAAA1BMVEX///+nxBvIAAAAIElEQVRIie3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAID3AR2QAAEZ22inAAAAAElFTkSuQmCC');
+    }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .newspaper-header { border-bottom: 4px double #2c2c2c; }
+    .article-body p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+    .text-initial {
+      float: left;
+      font-size: 4.5rem;
+      line-height: 0.8;
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+      font-weight: 900;
+      font-family: 'Playfair Display', serif;
+    }
+    .nav-link {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <!-- HEADER -->
+  <header class="bg-stone-100 py-4 shadow-sm">
+    <div class="container mx-auto px-6 newspaper-header pb-4 text-center">
+      <h1 class="font-playfair text-5xl md:text-7xl font-extrabold text-black">YH NEWS</h1>
+      <p class="text-sm text-gray-600 mt-1 tracking-widest uppercase">The Official Voice of Yuzhny Hospital</p>
+    </div>
+    <div class="container mx-auto px-6 py-2 text-xs text-gray-700 flex justify-between border-b border-gray-400">
+      <nav class="flex gap-4 items-center">
+        <a href="./index.html" class="nav-link text-blue-800">Front Page</a>
+        <a href="./opinion.html" class="nav-link text-gray-600 hover:text-black">Opinion</a>
+        <a href="./community.html" class="nav-link text-gray-600 hover:text-black">Community & Ads</a>
+      </nav>
+      <span id="current-date">Loading date...</span>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container mx-auto px-6 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <!-- LEFT: Main Article -->
+      <div class="lg:col-span-2">
+        <article>
+          <h2 class="font-playfair text-4xl font-bold text-black leading-tight">
+            Yuzhny Hospital Launches "Vital Sign" Initiative to Fortify City-Wide Emergency Response
+          </h2>
+          <p class="text-gray-600 my-4">By YH News Staff | Published June 22, 2025</p>
+          <img src="https://images.unsplash.com/photo-1588776814546-b88a3d45aab7?auto=format&fit=crop&w=1200&q=80"
+               alt="Hospital staff in a meeting"
+               class="w-full shadow-lg mb-6 filter grayscale-[30%]">
+          <div class="article-body text-gray-800">
+            <p><span class="text-initial">Y</span>UZHNY — In a proactive move to enhance urban resilience, Yuzhny Hospital has officially launched "Operation Vital Sign," the most comprehensive emergency response drill in the city's history. The initiative, led by Deputy of Chief Dr. Glorious Gogoi, aims to stress-test the collaborative abilities of the city's police, military, and medical services in the face of a large-scale simulated disaster.</p>
+            <p>"Readiness is not a goal; it's a constant state of practice," Dr. Gogoi stated at the launch event. "Operation Vital Sign is designed to identify our strengths and, more importantly, to uncover our weaknesses in a controlled environment. When a real crisis hits, we must be able to work as one seamless unit. This drill will ensure we are prepared for that day."</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- RIGHT: Sidebar -->
+      <aside class="lg:col-span-1 space-y-8">
+        <div class="bg-stone-50 p-6 rounded-sm shadow-md border border-gray-200 text-center">
+          <h3 class="font-playfair text-xl font-bold border-b border-gray-300 pb-2 mb-4">A Legacy of Leadership</h3>
+          <img src="https://raw.githubusercontent.com/DrxEaruingam/akshay-retirement/main/akshay.webp"
+               alt="Dr. Akshay Khandare"
+               class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-lg filter grayscale-[80%]">
+          <p class="text-sm font-bold mt-4">Chief Khandare Retires</p>
+          <p class="text-xs text-gray-600 italic mt-1">
+            After two decades of visionary service, Dr. Akshay Khandare passes the torch. His leadership has left an indelible mark on Yuzhny Hospital and the community it serves.
+          </p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-sm shadow-md border border-gray-200">
+          <h3 class="font-playfair text-xl font-bold border-b border-gray-300 pb-2 mb-4">Hospital Announcements</h3>
+          <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+            <li>New visitor hours will be implemented starting July 1st.</li>
+            <li>The north wing will be temporarily closed for renovations next week.</li>
+            <li>Annual staff performance reviews are due by the end of the month.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white mt-16 py-8">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="font-playfair text-2xl">YH NEWS</h3>
+      <p class="text-sm text-gray-400 mt-2">&copy; 2025 Yuzhny Hospital News Network.</p>
+    </div>
+  </footer>
+
+  <!-- DATE SCRIPT -->
+  <script>
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  </script>
+</body>
+</html>
