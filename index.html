@@ -1,98 +1,289 @@
+<!-- PAGE 1: index.html (The Front Page) -->
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YH News - Front Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Roboto Slab', serif; }
-    .font-playfair { font-family: 'Playfair Display', serif; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YH News - The Voice of Yuzhny Hospital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Source Serif Pro', serif; background-color: #f8f7f4; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .newspaper-header { border-bottom: 4px double #1a1a1a; }
+        .article-body p { margin-bottom: 1.5rem; line-height: 1.9; font-size: 1.1rem; }
+        .text-initial { float: left; font-size: 5rem; line-height: 0.8; margin-right: 0.75rem; font-weight: 700; font-family: 'Playfair Display', serif; }
+        .nav-link { text-transform: uppercase; font-weight: 600; font-size: 0.875rem; letter-spacing: 0.05em; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
+        .nav-link:hover { border-color: #333; }
+        .nav-link.active { border-color: #1d4ed8; color: #1d4ed8; }
+        .breaking-news-ticker { animation: ticker-scroll 30s linear infinite; }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
 </head>
-<body class="bg-[#f7f7f5] text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+<body class="text-gray-800">
 
-  <!-- 🔗 NAVBAR -->
-  <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex flex-col md:flex-row justify-between items-center">
-    <div class="flex items-center gap-4">
-      <h1 class="text-2xl font-bold font-playfair">YH NEWS</h1>
-      <span class="text-sm text-gray-500 dark:text-gray-300 hidden sm:block">The Official Voice of Yuzhny Hospital</span>
-    </div>
-    <nav class="mt-3 md:mt-0 flex gap-4 text-sm font-semibold uppercase">
-      <a href="index.html" class="text-blue-700 dark:text-blue-300">Front Page</a>
-      <a href="opinion.html" class="hover:text-blue-600 dark:hover:text-blue-400">Opinion</a>
-      <a href="community.html" class="hover:text-blue-600 dark:hover:text-blue-400">Community</a>
-    </nav>
-  </header>
+    <header class="bg-white py-4 shadow-lg">
+        <div class="container mx-auto px-6 newspaper-header pb-4 text-center">
+            <h1 class="font-playfair text-5xl md:text-7xl font-extrabold text-black">YH NEWS</h1>
+            <p class="text-sm text-gray-500 mt-1 tracking-widest uppercase">The Official Voice of Yuzhny Hospital</p>
+        </div>
+        <div class="container mx-auto px-6 py-2 text-sm text-gray-700 flex justify-between items-center border-b-2 border-gray-200">
+            <nav class="flex gap-6 items-center">
+                <a href="./index.html" class="nav-link active">Front Page</a>
+                <a href="./opinion.html" class="nav-link">Opinion</a>
+                <a href="./community.html" class="nav-link">Community</a>
+            </nav>
+            <span id="current-date" class="hidden md:block">Sunday, June 22, 2025</span>
+        </div>
+        <div class="bg-red-700 text-white text-sm font-semibold overflow-hidden whitespace-nowrap">
+            <div class="py-1 inline-block breaking-news-ticker">
+                <span class="mx-8">BREAKING: City-wide emergency drill "Operation Vital Sign" causes temporary traffic disruptions downtown.</span>
+                <span class="mx-8">HEALTH ALERT: Flu season is upon us. YH recommends vaccination for all citizens.</span>
+            </div>
+        </div>
+    </header>
 
-  <!-- 🔥 FEATURE ARTICLE -->
-  <main class="max-w-5xl mx-auto px-6 py-10">
-    <article>
-      <h2 class="text-4xl font-bold font-playfair mb-4">Yuzhny Hospital Launches “Vital Sign” Initiative</h2>
-      <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Published June 22, 2025 by YH News Staff</p>
-      <img src="https://images.unsplash.com/photo-1588776814546-b88a3d45aab7?auto=format&fit=crop&w=1200&q=80" alt="Hospital staff" class="rounded-lg mb-8 shadow-md">
-      <div class="space-y-6 text-[1.1rem] leading-7">
-        <p><strong>Yuzhny —</strong> In a proactive move to enhance urban resilience, Yuzhny Hospital has officially launched “Operation Vital Sign,” the most comprehensive emergency response drill in the city's history.</p>
-        <p>Led by Deputy of Chief Dr. Glorious Gogoi, the initiative aims to stress-test the collaborative abilities of the city's police, military, and medical services in the face of a large-scale simulated disaster.</p>
-        <p><em>"Readiness is not a goal; it's a constant state of practice,"</em> said Dr. Gogoi. <em>"This drill will ensure we are prepared for any crisis."</em></p>
-      </div>
-    </article>
+    <main class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2">
+                <article>
+                    <h2 class="font-playfair text-4xl font-bold text-black leading-tight">Yuzhny Hospital Launches "Vital Sign" Initiative to Fortify City-Wide Emergency Response</h2>
+                    <p class="text-gray-500 my-4">By YH News Staff | Published June 22, 2025</p>
+                    <div id="gallery-container" class="mb-6">
+                        <img id="main-image" src="https://images.unsplash.com/photo-1588776814546-b88a3d45aab7?auto=format&fit=crop&w=1200&q=80" alt="Hospital staff in a meeting" class="w-full shadow-lg rounded-md mb-2">
+                        <div class="flex gap-2">
+                           <img src="https://images.unsplash.com/photo-1588776814546-b88a3d45aab7?auto=format&fit=crop&w=200&q=80" class="w-1/4 h-20 object-cover cursor-pointer rounded-sm border-2 border-blue-600" onclick="changeImage(this.src)">
+                           <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a13e?q=80&w=200&auto=format&fit=crop" class="w-1/4 h-20 object-cover cursor-pointer rounded-sm border-2 border-transparent hover:border-blue-600" onclick="changeImage(this.src)">
+                           <img src="https://images.unsplash.com/photo-1576091160550-2173dba9996a?q=80&w=200&auto=format&fit=crop" class="w-1/4 h-20 object-cover cursor-pointer rounded-sm border-2 border-transparent hover:border-blue-600" onclick="changeImage(this.src)">
+                        </div>
+                    </div>
+                    <div class="article-body text-gray-800">
+                        <p><span class="text-initial">Y</span>UZHNY — In a proactive move to enhance urban resilience, Yuzhny Hospital has officially launched "Operation Vital Sign," the most comprehensive emergency response drill in the city's history. The initiative, led by Deputy of Chief Dr. Glorious Gogoi, aims to stress-test the collaborative abilities of the city's police, military, and medical services in the face of a large-scale simulated disaster.</p>
+                        <p>"Readiness is not a goal; it's a constant state of practice," Dr. Gogoi stated at the launch event. "Operation Vital Sign is designed to identify our strengths and, more importantly, to uncover our weaknesses in a controlled environment. When a real crisis hits, we must be able to work as one seamless unit. This drill will ensure we are prepared for that day."</p>
+                    </div>
+                </article>
+            </div>
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="bg-white p-6 rounded-md shadow-md">
+                    <h3 class="font-playfair text-xl font-bold border-b border-gray-300 pb-2 mb-4">A Legacy of Leadership</h3>
+                    <img src="https://raw.githubusercontent.com/DrxEaruingam/akshay-retirement/main/akshay.webp" alt="Dr. Akshay Khandare" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-lg">
+                    <p class="text-center text-sm font-bold mt-4">Chief Khandare Retires</p>
+                    <p class="text-center text-xs text-gray-600 italic mt-1">After two decades of visionary service, Dr. Akshay Khandare passes the torch. His leadership has left an indelible mark on Yuzhny Hospital.</p>
+                </div>
+                <div class="bg-white p-6 rounded-md shadow-md">
+                     <h3 class="font-playfair text-xl font-bold border-b border-gray-300 pb-2 mb-4">Hospital Briefs</h3>
+                     <ul class="list-disc list-inside space-y-3 text-sm text-gray-700">
+                         <li><span class="font-semibold">New Visitor Hours:</span> Effective July 1st, visiting hours will be from 11 AM to 8 PM daily.</li>
+                         <li><span class="font-semibold">North Wing Closure:</span> The north wing will be temporarily closed for renovations next week.</li>
+                         <li><span class="font-semibold">Staff Reviews:</span> Annual performance reviews are due by the end of the month.</li>
+                     </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white mt-16 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-playfair text-2xl">YH NEWS</h3>
+            <p class="text-sm text-gray-400 mt-2">&copy; 2025 Yuzhny Hospital News Network.</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        function changeImage(src) {
+            document.getElementById('main-image').src = src;
+            document.querySelectorAll('#gallery-container img').forEach(img => img.classList.remove('border-blue-600'));
+            event.target.classList.add('border-blue-600');
+        }
+    </script>
+</body>
+</html>
+```html
+<!-- PAGE 2: opinion.html (Opinion & Editorials) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YH News - Opinion</title>
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap)" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto Slab', serif; background-color: #f3f2ee; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .newspaper-header { border-bottom: 4px double #2c2c2c; }
+        .nav-link { text-transform: uppercase; font-weight: 600; font-size: 0.875rem; letter-spacing: 0.05em; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
+        .nav-link:hover { border-color: #333; }
+        .nav-link.active { border-color: #1d4ed8; color: #1d4ed8; }
+    </style>
+</head>
+<body class="text-gray-800">
 
-    <!-- 📌 QUICK HIGHLIGHTS -->
-    <section class="mt-16">
-      <h3 class="text-2xl font-bold font-playfair mb-4 border-b pb-2 border-gray-400">Quick Highlights</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm text-gray-800 dark:text-gray-200">
-        <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-md">✅ <strong>400+</strong> participated in emergency drill.</div>
-        <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-md">👨‍⚕️ Dr. Gogoi awarded “Leadership in Crisis” medal.</div>
-        <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-md">🩺  New Trauma Wing plans revealed for Q4 2025.</div>
-      </div>
-    </section>
+    <header class="bg-white py-4 shadow-lg">
+        <div class="container mx-auto px-6 newspaper-header pb-4 text-center">
+            <h1 class="font-playfair text-5xl md:text-7xl font-extrabold text-black">YH NEWS</h1>
+            <p class="text-sm text-gray-500 mt-1 tracking-widest uppercase">The Official Voice of Yuzhny Hospital</p>
+        </div>
+        <div class="container mx-auto px-6 py-2 text-sm text-gray-700 flex justify-between items-center border-b-2 border-gray-200">
+             <nav class="flex gap-6 items-center">
+                <a href="./index.html" class="nav-link">Front Page</a>
+                <a href="./opinion.html" class="nav-link active">Opinion</a>
+                <a href="./community.html" class="nav-link">Community</a>
+            </nav>
+            <span id="current-date" class="hidden md:block">Sunday, June 22, 2025</span>
+        </div>
+    </header>
 
-    <!-- 💬 QUOTE OF THE WEEK -->
-    <section class="mt-12 bg-blue-50 dark:bg-blue-900 rounded-md p-6 text-center shadow">
-      <h4 class="font-bold text-lg mb-2">🗣️ Quote of the Week</h4>
-      <p class="italic text-blue-800 dark:text-blue-100">“The strength of the team is each individual member. The strength of each member is the team.”</p>
-      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">– Phil Jackson</p>
-    </section>
+    <main class="container mx-auto px-6 py-10">
+        <section>
+            <h2 class="font-playfair text-4xl font-bold text-black mb-6 border-b-2 border-gray-300 pb-2">Letters to the Editor</h2>
+            
+            <div class="bg-white p-6 rounded-md shadow-md mb-8 border border-gray-200">
+                <h3 class="font-bold text-lg mb-4">Submit Your Letter</h3>
+                <form id="letterForm">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <input id="letterName" type="text" placeholder="Your Name" required class="col-span-1 bg-gray-100 border-gray-300 rounded-md p-2">
+                        <input id="letterMessage" type="text" placeholder="Your message..." required class="col-span-2 bg-gray-100 border-gray-300 rounded-md p-2">
+                    </div>
+                    <button type="submit" class="mt-4 w-full sm:w-auto bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-black transition font-semibold">Submit</button>
+                </form>
+            </div>
 
-    <!-- 🎬 BEHIND THE SCENES -->
-    <section class="mt-16">
-      <h3 class="text-2xl font-bold font-playfair mb-4 border-b pb-2 border-gray-400">Behind the Scenes</h3>
-      <p class="text-[1rem] leading-7 mb-6">While the spotlight shone on emergency units, the hospital’s kitchen staff, janitorial crew, and security teams quietly played essential roles in the background logistics of Operation Vital Sign. Their dedication ensured smooth execution and safety throughout the simulation.</p>
-    </section>
+            <div id="lettersContainer" class="space-y-4 max-h-[40rem] overflow-y-auto pr-4">
+                <p class="text-center text-gray-500">Loading letters...</p>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white mt-16 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-playfair text-2xl">YH NEWS</h3>
+            <p class="text-sm text-gray-400 mt-2">&copy; 2025 Yuzhny Hospital News Network.</p>
+        </div>
+    </footer>
+    <script type="module">
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const firebaseConfig = { apiKey: "YOUR_API_KEY", authDomain: "YOUR_AUTH_DOMAIN", projectId: "YOUR_PROJECT_ID" };
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'yh-newspaper';
+        import { initializeApp } from "[https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js](https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js)";
+        import { getAuth, signInAnonymously } from "[https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js](https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js)";
+        import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp, orderBy } from "[https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js](https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js)";
+        let app, auth, db;
+        try {
+            const fbConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : firebaseConfig;
+            app = initializeApp(fbConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            await signInAnonymously(auth);
+        } catch(e) { console.error("Firebase initialization failed:", e); }
+        const letterForm = document.getElementById('letterForm');
+        const lettersContainer = document.getElementById('lettersContainer');
+        letterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('letterName').value.trim();
+            const message = document.getElementById('letterMessage').value.trim();
+            if (name && message) {
+                try {
+                    await addDoc(collection(db, 'artifacts', appId, 'public/data/letters_to_editor'), { name, message, createdAt: serverTimestamp() });
+                    letterForm.reset();
+                } catch (error) { alert("Could not submit your letter."); }
+            }
+        });
+        const q = query(collection(db, 'artifacts', appId, 'public/data/letters_to_editor'), orderBy('createdAt', 'desc'));
+        onSnapshot(q, (querySnapshot) => {
+            lettersContainer.innerHTML = ''; 
+            if (querySnapshot.empty) {
+                lettersContainer.innerHTML = '<p class="text-center text-gray-500">Be the first to write a letter!</p>';
+                return;
+            }
+            querySnapshot.forEach((doc) => {
+                const letter = doc.data();
+                const letterEl = document.createElement('div');
+                letterEl.classList.add('bg-white', 'p-4', 'rounded-md', 'border-l-4', 'border-gray-300', 'shadow-sm');
+                letterEl.innerHTML = `<p class="text-gray-800 italic">"${letter.message}"</p><p class="text-right text-sm font-bold text-gray-700 mt-2">- ${letter.name}</p>`;
+                lettersContainer.appendChild(letterEl);
+            });
+        });
+    </script>
+</body>
+</html>
+```html
+<!-- PAGE 3: community.html (Advertisements & Community News) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YH News - Community & Ads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto Slab', serif; background-color: #f3f2ee; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .newspaper-header { border-bottom: 4px double #2c2c2c; }
+        .nav-link { text-transform: uppercase; font-weight: 600; font-size: 0.875rem; letter-spacing: 0.05em; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
+        .nav-link:hover { border-color: #333; }
+        .nav-link.active { border-color: #1d4ed8; color: #1d4ed8; }
+    </style>
+</head>
+<body class="text-gray-800">
 
-    <!-- 🔗 SIDEBAR SECTIONS -->
-    <section class="mt-16 grid md:grid-cols-2 gap-6">
-      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-lg shadow-md">
-        <h3 class="font-playfair text-xl mb-2">A Legacy of Leadership</h3>
-        <img src="https://raw.githubusercontent.com/DrxEaruingam/akshay-retirement/main/akshay.webp" alt="Dr. Akshay" class="rounded-full w-24 h-24 mx-auto mb-4 object-cover border-4 border-white shadow-lg">
-        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Dr. Akshay Khandare retires after 20 years of visionary leadership.</p>
-      </div>
-      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-lg shadow-md">
-        <h3 class="font-playfair text-xl mb-4">Hospital Announcements</h3>
-        <ul class="list-disc pl-6 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-          <li>New visitor hours start July 1st.</li>
-          <li>North wing closed for renovation.</li>
-          <li>Staff reviews due by month-end.</li>
-        </ul>
-      </div>
-    </section>
-  </main>
+    <header class="bg-white py-4 shadow-lg">
+        <div class="container mx-auto px-6 newspaper-header pb-4 text-center">
+            <h1 class="font-playfair text-5xl md:text-7xl font-extrabold text-black">YH NEWS</h1>
+            <p class="text-sm text-gray-600 mt-1 tracking-widest uppercase">The Official Voice of Yuzhny Hospital</p>
+        </div>
+        <div class="container mx-auto px-6 py-2 text-sm text-gray-700 flex justify-between items-center border-b-2 border-gray-200">
+             <nav class="flex gap-6 items-center">
+                <a href="./index.html" class="nav-link">Front Page</a>
+                <a href="./opinion.html" class="nav-link">Opinion</a>
+                <a href="./community.html" class="nav-link active">Community</a>
+            </nav>
+            <span id="current-date" class="hidden md:block">Sunday, June 22, 2025</span>
+        </div>
+    </header>
 
-  <!-- 🔚 FOOTER -->
-  <footer class="bg-gray-100 dark:bg-gray-800 mt-16 py-6 text-center">
-    <p class="text-sm text-gray-600 dark:text-gray-300">&copy; 2025 Yuzhny Hospital News Network</p>
-  </footer>
-
-  <!-- 🌗 DARK MODE TOGGLE -->
-  <script>
-    const header = document.querySelector('header');
-    const toggleBtn = document.createElement('button');
-    toggleBtn.innerText = '🌞/🌙';
-    toggleBtn.className = "text-lg ml-4 hover:opacity-75 transition";
-    toggleBtn.onclick = () => document.documentElement.classList.toggle('dark');
-    header.appendChild(toggleBtn);
-  </script>
+    <main class="container mx-auto px-6 py-10">
+        <h2 class="font-playfair text-4xl font-bold text-black mb-6 border-b-2 border-gray-300 pb-2">Community & Advertisements</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-md shadow-md border border-gray-200 text-center">
+                 <h3 class="font-playfair text-lg font-bold uppercase tracking-wider">Advertisement</h3>
+                 <div class="border-y-2 border-dashed border-gray-300 my-2 py-4">
+                    <p class="font-bold text-blue-800 text-xl">Visit the Yuzhny Hospital Cafe!</p>
+                    <p class="mt-2">Now serving freshly brewed coffee and healthy snacks. Open 24/7 for all staff and visitors.</p>
+                 </div>
+            </div>
+             <div class="bg-white p-6 rounded-md shadow-md border border-gray-200 text-center">
+                 <h3 class="font-playfair text-lg font-bold uppercase tracking-wider">Community Event</h3>
+                 <div class="border-y-2 border-dashed border-gray-300 my-2 py-4">
+                    <p class="font-bold text-green-800 text-xl">Annual Charity Blood Drive</p>
+                    <p class="mt-2">Join us next Saturday in the main lobby to donate blood and save a life. Refreshments will be provided.</p>
+                 </div>
+            </div>
+            <div class="md:col-span-2 bg-white p-6 rounded-md shadow-md border border-gray-200 text-center">
+                 <h3 class="font-playfair text-lg font-bold uppercase tracking-wider">Public Service Announcement</h3>
+                 <div class="border-y-2 border-dashed border-gray-300 my-2 py-4">
+                    <p class="font-bold text-red-800 text-xl">Seasonal Flu Vaccinations Available</p>
+                    <p class="mt-2">Protect yourself and your loved ones. Flu shots are now available at the Yuzhny community clinic. Walk-ins welcome.</p>
+                 </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white mt-16 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-playfair text-2xl">YH NEWS</h3>
+            <p class="text-sm text-gray-400 mt-2">&copy; 2025 Yuzhny Hospital News Network.</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    </script>
 </body>
 </html>
