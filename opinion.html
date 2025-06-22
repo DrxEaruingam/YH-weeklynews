@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YH News - Opinion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto Slab', serif;
+      background-color: #f3f2ee;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiGAAAAA1BMVEX///+nxBvIAAAAIElEQVRIie3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAID3AR2QAAEZ22inAAAAAElFTkSuQmCC');
+    }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .newspaper-header { border-bottom: 4px double #2c2c2c; }
+    .nav-link {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <!-- HEADER -->
+  <header class="bg-stone-100 py-4 shadow-sm">
+    <div class="container mx-auto px-6 newspaper-header pb-4 text-center">
+      <h1 class="font-playfair text-5xl md:text-7xl font-extrabold text-black">YH NEWS</h1>
+      <p class="text-sm text-gray-600 mt-1 tracking-widest uppercase">The Official Voice of Yuzhny Hospital</p>
+    </div>
+    <div class="container mx-auto px-6 py-2 text-xs text-gray-700 flex justify-between border-b border-gray-400">
+      <nav class="flex gap-4 items-center">
+        <a href="./index.html" class="nav-link text-gray-600 hover:text-black">Front Page</a>
+        <a href="./opinion.html" class="nav-link text-blue-800">Opinion</a>
+        <a href="./community.html" class="nav-link text-gray-600 hover:text-black">Community & Ads</a>
+      </nav>
+      <span id="current-date">Loading date...</span>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container mx-auto px-6 py-10">
+    <section>
+      <h2 class="font-playfair text-4xl font-bold text-black mb-6 border-b-2 border-gray-400 pb-2">Letters to the Editor</h2>
+
+      <!-- Form -->
+      <div class="bg-stone-50 p-6 rounded-sm shadow-md mb-8 border border-gray-200">
+        <h3 class="font-bold text-lg mb-4">Submit Your Letter</h3>
+        <form id="letterForm">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <input id="letterName" type="text" placeholder="Your Name" required class="col-span-1 bg-gray-100 border border-gray-300 rounded-sm p-2" />
+            <input id="letterMessage" type="text" placeholder="Your message..." required class="col-span-2 bg-gray-100 border border-gray-300 rounded-sm p-2" />
+          </div>
+          <button type="submit" class="mt-4 w-full sm:w-auto bg-gray-800 text-white px-6 py-2 rounded-sm hover:bg-black transition font-semibold">Submit</button>
+        </form>
+      </div>
+
+      <!-- Letters Display -->
+      <div id="lettersContainer" class="space-y-4 max-h-[40rem] overflow-y-auto pr-4">
+        <p class="text-center text-gray-500">Loading letters...</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white mt-16 py-8">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="font-playfair text-2xl">YH NEWS</h3>
+      <p class="text-sm text-gray-400 mt-2">&copy; 2025 Yuzhny Hospital News Network.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script type="module">
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    await signInAnonymously(auth);
+
+    const letterForm = document.getElementById('letterForm');
+    const letterNameInput = document.getElementById('letterName');
+    const letterMessageInput = document.getElementById('letterMessage');
+    const lettersContainer = document.getElementById('lettersContainer');
+
+    const lettersCol = collection(db, 'letters_to_editor');
+
+    letterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = letterNameInput.value.trim();
+      const message = letterMessageInput.value.trim();
+      if (name && message) {
+        try {
+          await addDoc(lettersCol, {
+            name,
+            message,
+            createdAt: serverTimestamp()
+          });
+          letterForm.reset();
+        } catch (err) {
+          alert("Could not submit your letter.");
+          console.error(err);
+        }
+      }
+    });
+
+    const q = query(lettersCol, orderBy('createdAt', 'desc'));
+    onSnapshot(q, (querySnapshot) => {
+      lettersContainer.innerHTML = '';
+      if (querySnapshot.empty) {
+        lettersContainer.innerHTML = '<p class="text-center text-gray-500">Be the first to write a letter!</p>';
+        return;
+      }
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const letterEl = document.createElement('div');
+        letterEl.className = 'bg-stone-50 p-4 rounded-sm border-l-4 border-gray-300';
+        letterEl.innerHTML = `
+          <p class="text-gray-800 italic">"${data.message}"</p>
+          <p class="text-right text-sm font-bold text-gray-700 mt-2">- ${data.name}</p>`;
+        lettersContainer.appendChild(letterEl);
+      });
+    });
+  </script>
+</body>
+</html>
