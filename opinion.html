@@ -1,134 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YH News - Opinion</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Roboto Slab', serif;
-      background-color: #f3f2ee;
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiGAAAAA1BMVEX///+nxBvIAAAAIElEQVRIie3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAID3AR2QAAEZ22inAAAAAElFTkSuQmCC');
-    }
-    .font-playfair {
-      font-family: 'Playfair Display', serif;
-    }
-    .newspaper-header {
-      border-bottom: 4px double #2c2c2c;
-    }
-    .nav-link {
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.875rem;
-      letter-spacing: 0.1em;
-    }
-  </style>
-</head>
-<body class="text-gray-800">
+<html lang="en" class="light">
+<head> … </head>
+<body class="bg-[#f7f7f5] text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
-  <header class="bg-stone-100 py-4 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 newspaper-header pb-4 text-center">
-      <h1 class="font-playfair text-4xl sm:text-6xl font-extrabold text-black">YH NEWS</h1>
-      <p class="text-sm text-gray-600 mt-1 tracking-widest uppercase">The Official Voice of Yuzhny Hospital</p>
-    </div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2 text-xs text-gray-700 flex flex-col sm:flex-row justify-between items-center gap-2 border-b border-gray-400">
-      <nav class="flex gap-4">
-        <a href="./index.html" class="nav-link text-gray-600 hover:text-black">Front Page</a>
-        <a href="./opinion.html" class="nav-link text-blue-800">Opinion</a>
-        <a href="./community.html" class="nav-link text-gray-600 hover:text-black">Community & Ads</a>
-      </nav>
-      <span id="current-date">Sunday, June 22, 2025</span>
-    </div>
+  <!-- 1. Header: Logo + Theme Toggle -->
+  <header class="flex justify-between items-center px-6 py-4 border-b">
+    <h1 class="text-3xl font-bold font-serif tracking-wide">YH NEWS</h1>
+    <button id="mode-toggle">🌞/🌙</button>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-    <section>
-      <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-black mb-6 border-b-2 border-gray-400 pb-2">Letters to the Editor</h2>
-      
-      <div class="bg-stone-50 p-4 sm:p-6 rounded-sm shadow-md mb-8 border border-gray-200">
-        <h3 class="font-bold text-lg mb-4">Submit Your Letter</h3>
-        <form id="letterForm" class="space-y-4">
-          <div class="flex flex-col sm:flex-row gap-4">
-            <input id="letterName" type="text" placeholder="Your Name" required class="flex-1 bg-gray-100 border border-gray-300 rounded-sm p-2" />
-            <input id="letterMessage" type="text" placeholder="Your message..." required class="flex-1 bg-gray-100 border border-gray-300 rounded-sm p-2" />
-          </div>
-          <button type="submit" class="w-full sm:w-auto bg-gray-800 text-white px-6 py-2 rounded-sm hover:bg-black transition font-semibold">Submit</button>
-        </form>
-      </div>
+  <!-- 2. Section Title -->
+  <main class="px-6 py-10 max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold font-serif mb-8 border-b pb-2">Letters to the Editor</h2>
 
-      <div id="lettersContainer" class="space-y-4 max-h-[40rem] overflow-y-auto pr-2">
-        <p class="text-center text-gray-500">Loading letters...</p>
-      </div>
-    </section>
+    <!-- 3. Submission Form -->
+    <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-8">
+      <h3 class="text-xl font-semibold mb-4">Submit Your Letter</h3>
+      <form id="letterForm" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input id="letterName" type="text" placeholder="Your Name" required class="col-span-1 p-2 rounded border border-gray-300">
+        <input id="letterMessage" type="text" placeholder="Your message..." required class="col-span-2 p-2 rounded border border-gray-300">
+        <button type="submit" class="md:col-span-3 mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Submit</button>
+      </form>
+    </div>
+
+    <!-- 4. Letters Display Section -->
+    <div id="lettersContainer" class="space-y-6 max-h-[32rem] overflow-y-auto pr-4">
+      <p class="text-center text-gray-500 dark:text-gray-400">Loading letters...</p>
+    </div>
   </main>
 
-  <footer class="bg-gray-900 text-white mt-16 py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h3 class="font-playfair text-2xl">YH NEWS</h3>
-      <p class="text-sm text-gray-400 mt-2">&copy; 2025 Yuzhny Hospital News Network.</p>
-    </div>
+  <!-- 5. Footer -->
+  <footer class="bg-gray-100 dark:bg-gray-800 py-6 text-center">
+    <p class="text-sm text-gray-600 dark:text-gray-300">&copy; 2025 Yuzhny Hospital News Network</p>
   </footer>
 
+  <!-- 6. Scripts (Dark mode + Firebase) -->
   <script type="module">
-    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
-      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    // Date Setup
+    document.title = "YH News - Opinion";
+
+    // Dark Mode
+    const btn = document.getElementById('mode-toggle');
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
     });
 
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID"
-    };
-
+    // Firebase Handling (submit and render letters)
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
+    const firebaseConfig = { apiKey: "YOUR_KEY", authDomain: "YOUR_DOMAIN", projectId: "YOUR_PROJECT" };
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
     const db = getFirestore(app);
+    const auth = getAuth(app);
     await signInAnonymously(auth);
 
     const letterForm = document.getElementById('letterForm');
     const letterNameInput = document.getElementById('letterName');
     const letterMessageInput = document.getElementById('letterMessage');
     const lettersContainer = document.getElementById('lettersContainer');
-
-    const lettersCol = collection(db, 'letters_to_editor');
+    const lettersCol = collection(db, 'artifacts', 'yh-newspaper', 'public/data/letters_to_editor');
 
     letterForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = letterNameInput.value.trim();
       const message = letterMessageInput.value.trim();
       if (name && message) {
-        try {
-          await addDoc(lettersCol, { name, message, createdAt: serverTimestamp() });
-          letterForm.reset();
-        } catch (error) {
-          alert("Could not submit your letter.");
-        }
+        await addDoc(lettersCol, { name, message, createdAt: serverTimestamp() });
+        letterForm.reset();
       }
     });
 
     const q = query(lettersCol, orderBy('createdAt', 'desc'));
-    onSnapshot(q, (querySnapshot) => {
+    onSnapshot(q, (snapshot) => {
       lettersContainer.innerHTML = '';
-      if (querySnapshot.empty) {
+      if (snapshot.empty) {
         lettersContainer.innerHTML = '<p class="text-center text-gray-500">Be the first to write a letter!</p>';
         return;
       }
-      querySnapshot.forEach((doc) => {
+      snapshot.forEach(doc => {
         const letter = doc.data();
-        const letterEl = document.createElement('div');
-        letterEl.className = 'bg-stone-50 p-4 rounded-sm border-l-4 border-gray-300';
-        letterEl.innerHTML = `
-          <p class="text-gray-800 italic">"${letter.message}"</p>
-          <p class="text-right text-sm font-bold text-gray-700 mt-2">- ${letter.name}</p>`;
-        lettersContainer.appendChild(letterEl);
+        const div = document.createElement('div');
+        div.className = 'bg-white dark:bg-gray-700 p-4 rounded border-l-4 border-blue-300';
+        div.innerHTML = `<p class="italic">"${letter.message}"</p><p class="text-right text-sm font-semibold mt-2">– ${letter.name}</p>`;
+        lettersContainer.appendChild(div);
       });
     });
   </script>
